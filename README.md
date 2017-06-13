@@ -15,6 +15,7 @@ It can also be used as a red team tool to harvest potential passwords that are b
 
 ### Notes/Dependencies:
 -Written for Powershell 4.0, may work with other versions
+
 -Requires PSExec
 
 ### Disclaimer:
