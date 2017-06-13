@@ -17,6 +17,10 @@ $workstations = Get-ADComputer -filter {Enabled -eq $true} | Where-Object{$_.Dis
 
 # Iterate through each workstation to get SSID names
 foreach ($workstation in $workstations) {
+
+    # Reset array to null (in case machine is not available on the network)
+    $network_ids = @()
+    
     echo "Running lookup on $workstation"
     $network_ids = & $psexec \\$workstation netsh.exe wlan show all | findstr c:/"SSID name" | %{$_.split('"')[1]} | ? {$_} | sort -uniq
 
