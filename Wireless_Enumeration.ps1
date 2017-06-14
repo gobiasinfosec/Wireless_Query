@@ -27,13 +27,16 @@ foreach ($workstation in $workstations) {
     # Iterate through each SSID name and pull the password
     foreach ($network_id in $network_ids) {
         echo "Running lookup on $network_id"
-        $password = & $psexec \\$workstation netsh.exe wlan show profile name="$network_id" key=clear | findstr c:/"Key Content" | %{$_.split('::')[1]}
+        $details = & $psexec \\$workstation netsh.exe wlan show profile name="$network_id" key=clear 
+        $password = $details | findstr /c:"Key Content" | %{$_.split('::')[1]}
+        $auth = $details | findstr /c:"Authentication" | %{$_.split('::')[1]}
         
         # Write all data to the results array
         $results += New-Object PsObject -Property @{
             Workstation = $workstation
             Password = $password
             Network = $network_id
+            Authentication = $auth
         }
     }
 }
