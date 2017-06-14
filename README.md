@@ -9,7 +9,7 @@ After it runs, the full output can be found at your $Output variable location.
 
 Edit the variables on lines 7-9 of the script per your needs. 
 
-This can be used as a blue team tool to ensure that your users are not connecting to networks that use weak passwords (or slightly modified to pull the wireless network type as well).
+This can be used as a blue team tool to ensure that your users are not connecting to networks that use weak passwords or networks with weak encryption types. 
 
 It can also be used as a red team tool to harvest potential passwords that are being used on the network or wireless hotspots that may not use RADIUS. But this is going to be super loud -> probably better to pick targets and just run the commands ad hoc.
 
